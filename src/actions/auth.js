@@ -1,8 +1,12 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 import { types } from '../types/types';
+import { finishLoading, startLoading } from './ui';
 
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => {
+        
+        dispatch(startLoading())
+
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
@@ -11,7 +15,10 @@ export const startLoginEmailPassword = (email, password) => {
             })
             .catch((e) => {
                 console.log(e);
-            });
+            })
+            .finally( () => {
+                dispatch( finishLoading() )
+            })
 
         // dispatch(login(123, 'Pedro'));
     };
