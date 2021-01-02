@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import {firebase} from '../firebase/firebase-config';
 
 
@@ -32,7 +32,7 @@ export const AppRouter = () => {
 
     if (checking) {
         return (
-            <h1>Espere...</h1>
+            <h1>Please wait...</h1>
         )
     }
 
